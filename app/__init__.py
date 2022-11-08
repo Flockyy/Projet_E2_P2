@@ -23,15 +23,15 @@ def create_app():
         return User.query.get(int(user_id))
 
     # blueprint for auth routes
-    from .auth import auth as auth_blueprint
+    from .routes.auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
     
     # blueprint for prediction routes
-    from .prediction import prediction as auth_blueprint
+    from .routes.prediction import prediction as auth_blueprint
     app.register_blueprint(auth_blueprint)
     
     # blueprint for main routes
-    from .main import main as main_blueprint
+    from .routes.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     return app

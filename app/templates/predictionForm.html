@@ -5,34 +5,141 @@
   Please fill the form, {{ name }}!
 </h1>
 
-<body>
-  <div class="register_page">
-    <div class="form">
-      <form action="{{url_for('prediction.result')}}" method="POST">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-            aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-            aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-            aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-            aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-            aria-describedby="basic-addon2">
-        </div>
-        <button type="submit" class="btn btn-primary">Show result !</button>
-      </form>
-    </div>
+<form method="POST" action="/result">
+  {{ form.csrf_token }}
+  <div class="form-group">
+    {{ form.overallInteriorQuality.label }}
+    {{ form.overallInteriorQuality(class_="form-control", size=20, placeholder="5") }}
   </div>
-</body>
 
+  {% if form.overallInteriorQuality.errors %}
+  <ul class="errors">
+    {% for error in form.overallInteriorQuality.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.totalSf.label }}
+    {{ form.totalSf(class_="form-control", size=20, placeholder="1778") }}
+  </div>
+
+  {% if form.totalSf.errors %}
+  <ul class="errors">
+    {% for error in form.totalSf.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.garageArea.label }}
+    {{ form.garageArea(class_="form-control", size=20, placeholder="730") }}
+  </div>
+
+  {% if form.garageArea.errors %}
+  <ul class="errors">
+    {% for error in form.garageArea.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.fireplaces.label }}
+    {{ form.fireplaces(class_="form-control", size=20, placeholder="0") }}
+  </div>
+
+  {% if form.fireplaces.errors %}
+  <ul class="errors">
+    {% for error in form.fireplaces.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.roomNbAbvGrd.label }}
+    {{ form.roomNbAbvGrd(class_="form-control", size=20, placeholder="5") }}
+  </div>
+
+  {% if form.roomNbAbvGrd.errors %}
+  <ul class="errors">
+    {% for error in form.roomNbAbvGrd.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.overallExteriorQuality.label }}
+    {{ form.overallExteriorQuality(class_="form-control", size=20, placeholder="8") }}
+  </div>
+
+  {% if form.overallExteriorQuality.errors %}
+  <ul class="errors">
+    {% for error in form.overallExteriorQuality.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.fullLot.label }}
+    {{ form.fullLot(class_="form-control", size=20, placeholder="11702") }}
+  </div>
+
+  {% if form.fullLot.errors %}
+  <ul class="errors">
+    {% for error in form.fullLot.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.timeBetweenSale.label }}
+    {{ form.timeBetweenSale(class_="form-control", size=20, placeholder="0") }}
+  </div>
+
+  {% if form.timeBetweenSale.errors %}
+  <ul class="errors">
+    {% for error in form.timeBetweenSale.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.saleYear.label }}
+    {{ form.saleYear(class_="form-control", size=20, placeholder="1961") }}
+  </div>
+
+  {% if form.saleYear.errors %}
+  <ul class="errors">
+    {% for error in form.saleYear.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <div class="form-group">
+    {{ form.neighborhood.label }}
+    {{ form.neighborhood(class_="form-control", size=20, placeholder="NAmes") }}
+  </div>
+
+  {% if form.neighborhood.errors %}
+  <ul class="errors">
+    {% for error in form.neighborhood.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {{ form.submit(class_="form-control") }}
+
+  <p> La maison vaut: {{data}}</p>
+
+</form>
 {% endblock %}
