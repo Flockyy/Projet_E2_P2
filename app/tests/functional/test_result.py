@@ -1,6 +1,6 @@
+# fonctional/test_result.py
+
 from app.tests.conftest import client
-from app.models.users import Prediction
-import json
 
 def test_index_should_status_code_ok(client):
   data = {
@@ -15,5 +15,8 @@ def test_index_should_status_code_ok(client):
     'saleYear': '1961',
     'neighborhood': 'NAmes'
   }
-  response = client.post('/result', data = data)
-  assert response.status_code == 200
+  response = client.post('/result', 
+                        data = data, 
+                        headers = {'Content-Type': 'multipart/form-data'})
+  
+  assert response.status_code == 302

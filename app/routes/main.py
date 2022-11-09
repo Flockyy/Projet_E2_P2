@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
+from app.models.predictions import Prediction
 from .. import db
 
 main = Blueprint('main', __name__)
@@ -11,6 +12,7 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    preds = Prediction.query.filter_by(user_id = current_user.id)
+    return render_template('profile.html', user=current_user, predictions = preds)
   
   

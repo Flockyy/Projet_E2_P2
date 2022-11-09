@@ -1,3 +1,5 @@
+# conftest.py
+
 import pytest
 from app import db
 from app import create_app
@@ -12,7 +14,7 @@ def client():
         yield client
 
 @pytest.fixture
-def session(): # 1
+def session(): 
     connection = db.connect(':memory:')
     db_session = connection.cursor()
     yield db_session

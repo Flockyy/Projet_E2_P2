@@ -2,6 +2,49 @@
 
 {% block content %}
 <h1 class="title">
-  Welcome, {{ name }}!
+  Welcome, {{ user.name }}!
 </h1>
+
+<table id="data" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Interior qual.</th>
+      <th>Total surface</th>
+      <th>Garage surface</th>
+      <th>Fireplaces number</th>
+      <th>Room number above ground</th>
+      <th>Exterior qual.</th>
+      <th>Time between sale</th>
+      <th>Full lot surface</th>
+      <th>Sale year</th>
+      <th>Neighborhood name</th>
+      <th>Predicted price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pred in predictions %}
+      <tr>
+        <td>{{ pred.overallInteriorQuality }}</td>
+        <td>{{ pred.totalSf }}</td>
+        <td>{{ pred.garageArea }}</td>
+        <td>{{ pred.fireplaces }}</td>
+        <td>{{ pred.roomNbAbvGrd }}</td>
+        <td>{{ pred.overallExteriorQuality }}</td>
+        <td>{{ pred.fullLot }}</td>
+        <td>{{ pred.timeBetweenSale }}</td>
+        <td>{{ pred.saleYear }}</td>
+        <td>{{ pred.neighborhood }}</td>
+        <td>{{ pred.result }} $</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
 {% endblock %}

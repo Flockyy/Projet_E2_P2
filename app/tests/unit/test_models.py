@@ -1,5 +1,7 @@
+#unit/test_models.py
+
 from app.models.users import User
-from app.models.users import Prediction
+from app.models.predictions import Prediction
 
 def test_new_user():
     user = User()
